@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mDrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sitemap.qingzangtrain.activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_88px_in720p"
+            android:background="@drawable/bg_03">
+
+            <LinearLayout
+                android:id="@+id/train_menu"
+                android:layout_width="@dimen/_100px_in720p"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_36px_in720p"
+                    android:layout_height="@dimen/_36px_in720p"
+                    android:background="@drawable/qz_17" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/main_gaojing"
+                android:layout_width="@dimen/_50px_in720p"
+                android:layout_height="@dimen/_50px_in720p"
+                android:layout_centerInParent="true"
+                android:src="@drawable/qz_14" />
+
+            <LinearLayout
+                android:id="@+id/train_tongji"
+                android:layout_width="@dimen/_100px_in720p"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/_36px_in720p"
+                    android:layout_height="@dimen/_36px_in720p"
+                    android:background="@drawable/qz_19" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_80px_in720p"
+            android:clickable="true" />
+    </RelativeLayout>
+
+    <!--左侧布局-->
+    <LinearLayout
+        android:layout_width="@dimen/_380px_in720p"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_260px_in720p"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="@dimen/_76px_in720p"
+                android:layout_height="@dimen/_84px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:background="@drawable/qz_57" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:text="青藏线"
+                android:textColor="#e46251"
+                android:textSize="@dimen/_32px_in720p" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:text="列车行车监控分析平台"
+                android:textColor="#000000"
+                android:textSize="@dimen/_32px_in720p" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1px_in720p"
+            android:layout_marginTop="@dimen/_40px_in720p"
+            android:background="@color/grey_dan" />
+
+        <ListView
+            android:id="@+id/main_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <!--右侧布局-->
+    <LinearLayout
+        android:layout_width="@dimen/_460px_in720p"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <GridView
+            android:layout_marginTop="@dimen/_100px_in720p"
+            android:id="@+id/main_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

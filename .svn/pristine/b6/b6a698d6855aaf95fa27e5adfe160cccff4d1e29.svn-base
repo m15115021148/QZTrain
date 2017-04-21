@@ -1,0 +1,103 @@
+package com.sitemap.qingzangtrain.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.sitemap.qingzangtrain.R;
+import com.sitemap.qingzangtrain.model.TypeModel;
+import com.sitemap.qingzangtrain.view.HorizontalListView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @desc 供电 右侧 适配器
+ * Created by chenmeng on 2017/2/7.
+ */
+public class PowerSupplyRightAdapter extends BaseAdapter{
+    private Context mContext;
+    private Holder holder;
+    private List<TypeModel> mTopList;//头部 数据
+    private Map<Integer,List<TypeModel>> map;
+    private LinearLayout.LayoutParams params;
+
+    public PowerSupplyRightAdapter(Context context ,Map<Integer,List<TypeModel>> map,List<TypeModel> topList){
+        this.mContext = context;
+        this.mTopList = topList;
+        this.map = map;
+        params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+    }
+
+    @Override
+    public int getCount() {
+        return map.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return map.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.power_supply_right_item,null);
+            holder = new Holder();
+            holder.mLayout = (LinearLayout) convertView.findViewById(R.id.layout);
+            holder.mList = setData(map.get(position),mTopList);
+            convertView.setTag(holder);
+        }else{
+            holder = (Holder) convertView.getTag();
+        }
+
+        holder.mLayout.removeAllViews();
+        for (TypeModel model:holder.mList){
+            View tableView = LayoutInflater.from(mContext).inflate(R.layout.data_power_recycle_item,null);
+            TextView txt = (TextView) tableView.findViewById(R.id.txt);
+            txt.setText(model.getTypeName());
+            holder.mLayout.addView(tableView,params);
+        }
+
+        return convertView;
+    }
+
+    private class Holder{
+        LinearLayout mLayout;
+        List<TypeModel> mList;
+    }
+
+    /**
+     * 数据 得到筛选的数据
+     * @param list1
+     */
+    public List<TypeModel> setData(List<TypeModel> list1,List<TypeModel> currList){
+        List<TypeModel> list = new ArrayList<>();
+        list.clear();
+        if (list1.size()==currList.size()){
+            list = list1;
+        }else{
+            for (TypeModel model1:currList){
+                for (TypeModel model:list1){
+                    if (model1.getPos()==model.getPos()){
+                        list.add(model);
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+}

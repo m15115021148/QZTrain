@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_gaojing_details_guanliyuan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.GaojingDetailsActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10px_in720p"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/include_comment_gaojing_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80px_in720p"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2px_in720p"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/_20px_in720p"
+                    android:layout_marginRight="@dimen/_20px_in720p"
+                    android:background="@color/grey_dan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/white"
+                    android:padding="@dimen/_20px_in720p"
+                    android:text="告警详情"
+                    android:textColor="@color/lan_dan"
+                    android:textSize="@dimen/_30px_in720p" />
+            </RelativeLayout>
+
+            <com.sitemap.qingzangtrain.view.MyListView
+                android:id="@+id/details_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_20px_in720p"
+                android:divider="#00000000"
+                android:dividerHeight="0dip" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

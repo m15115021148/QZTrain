@@ -1,0 +1,139 @@
+package com.sitemap.qingzangtrain.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
+import com.sitemap.qingzangtrain.R;
+import com.sitemap.qingzangtrain.adapter.DataPowerFilterAdapter;
+import com.sitemap.qingzangtrain.model.TypeModel;
+import com.sitemap.qingzangtrain.util.ParserUtil;
+import com.sitemap.qingzangtrain.util.ToastUtil;
+
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * 筛选 页面
+ * @author chenmeng created by 2017/2/7
+ */
+@ContentView(R.layout.activity_filter)
+public class FilterActivity extends BaseActivity implements View.OnClickListener,DataPowerFilterAdapter.OnCallBackFilter {
+    private FilterActivity mContext;//本类
+    @ViewInject(R.id.back)
+    private LinearLayout mBack;//返回上一层
+    @ViewInject(R.id.title)
+    private TextView mTitle;//标题
+    @ViewInject(R.id.cb_all)
+    private CheckBox cbAll;//元素
+    @ViewInject(R.id.filter_gridView)
+    private GridView mGv;//布局
+    private List<TypeModel> mList;//数据
+    private DataPowerFilterAdapter mAdapter;//适配器
+    @ViewInject(R.id.filter_sure)
+    private TextView mSubmit;//提交
+    private List<TypeModel> mCurrList = new ArrayList<>();//选择的数据
+    private int currNum = 0;//当前选中的数量
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        initData();
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData(){
+        mTitle.setText("筛选");
+        mBack.setOnClickListener(this);
+        mSubmit.setOnClickListener(this);
+        mList = new ArrayList<>();
+        mList.clear();
+        mList = ParserUtil.jsonToList(getIntent().getStringExtra("filterData"),TypeModel.class);
+        for (TypeModel model:mList){
+            if (model.getIsSelect()==1) {
+                currNum = currNum +1;
+            }
+        }
+        if (currNum==mList.size()){
+            cbAll.setChecked(true);
+        }else{
+            cbAll.setChecked(false);
+        }
+        initGridView();
+        cbAll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    for (TypeModel model:mList){
+                        model.setIsSelect(1);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                }else{
+                    for (TypeModel model:mList){
+                        model.setIsSelect(0);
+                    }
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initGridView() {
+        mAdapter = new DataPowerFilterAdapter(mContext,mList,this);
+        mGv.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mBack){
+            mContext.finish();
+        }
+        if (v == mSubmit){
+            int selectSum = 0;//选中的个数
+            mCurrList.clear();
+            for (TypeModel model:mList){
+                if (model.getIsSelect()==1){
+                    selectSum += 1;
+                   mCurrList.add(model);
+                }
+            }
+            if (selectSum<2){
+                ToastUtil.showBottomLong(mContext,"至少要选择两个数据对比");
+                return;
+            }
+            Intent intent = new Intent();
+            intent.putExtra("values", JSON.toJSONString(mCurrList));
+            intent.putExtra("all",JSON.toJSONString(mList));
+            setResult(100,intent);
+            this.finish();
+        }
+    }
+
+    @Override
+    public void onClickListener(int pos) {
+        cbAll.setChecked(false);
+        if (mList.get(pos).getIsSelect()==0){
+            mList.get(pos).setIsSelect(1);
+        }else{
+            mList.get(pos).setIsSelect(0);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+}

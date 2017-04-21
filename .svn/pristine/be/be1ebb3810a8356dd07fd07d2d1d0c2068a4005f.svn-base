@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <!--底部布局点击-->
+        <LinearLayout
+            android:id="@+id/menu_bottom"
+            android:layout_width="@dimen/_200px_in720p"
+            android:layout_height="@dimen/_60px_in720p"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/_40px_in720p"
+            android:background="@drawable/bottom_system"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/menu_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="统计"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_30px_in720p" />
+
+            <ImageView
+                android:layout_width="@dimen/_17px_in720p"
+                android:layout_height="@dimen/_14px_in720p"
+                android:layout_marginLeft="@dimen/_15px_in720p"
+                android:background="@drawable/bottom_up" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

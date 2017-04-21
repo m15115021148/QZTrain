@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <LinearLayout
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90px_in720p">
+
+        <LinearLayout
+            android:background="@drawable/power_supply_lv_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/time"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textColor="@color/black_dan"
+                android:textSize="@dimen/_28px_in720p"
+                android:text="22:09:23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/date"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textColor="@color/black_dan"
+                android:textSize="@dimen/_22px_in720p"
+                android:text="2007-01-02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/power_supply_lv_bg"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/train"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textColor="@color/black_dan"
+                android:textSize="@dimen/_22px_in720p"
+                android:text="02/10221322"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

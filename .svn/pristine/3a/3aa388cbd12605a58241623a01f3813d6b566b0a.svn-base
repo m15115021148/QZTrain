@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 实心 -->
+    <solid android:color="@color/lan_dan"/>
+    <!-- 边框 -->
+    <stroke
+        android:width="@dimen/_1px_in720p"
+        android:color="@color/lan_dan"/>
+    <!-- 圆角 -->
+    <corners android:radius="@dimen/_5px_in720p"/>
+    <!-- 边距 -->
+    <padding
+        android:top="@dimen/_5px_in720p"
+        android:bottom="@dimen/_5px_in720p"
+        android:left="@dimen/_5px_in720p"
+        android:right="@dimen/_5px_in720p"/>
+
+</shape>

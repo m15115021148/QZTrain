@@ -1,0 +1,35 @@
+package com.sitemap.qingzangtrain.util;
+
+import android.content.Context;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.LinearLayout;
+
+import com.sitemap.qingzangtrain.R;
+
+
+/**
+ * @desc 动画的显示
+ * Created by chenmeng on 2016/11/29.
+ */
+public class AnimaUtil {
+
+    /**
+     * @param orientation true从左向右滑动，false 从右向左滑动
+     */
+    public static void setLayoutOrder(Context context,LinearLayout layout, boolean orientation){
+        if(orientation){
+            Animation ani = AnimationUtils.loadAnimation(context, R.anim.exit);
+            LayoutAnimationController lc = new LayoutAnimationController(ani);
+            lc.setOrder(LayoutAnimationController.ORDER_NORMAL);
+            layout.setLayoutAnimation(lc);
+        }else{
+            Animation ani = AnimationUtils.loadAnimation(context, R.anim.enter);
+            LayoutAnimationController lc = new LayoutAnimationController(ani);
+            lc.setOrder(LayoutAnimationController.ORDER_NORMAL);
+            layout.setLayoutAnimation(lc);
+        }
+    }
+
+}

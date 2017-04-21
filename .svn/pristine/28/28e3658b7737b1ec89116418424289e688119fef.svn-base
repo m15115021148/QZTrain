@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 地图标记样式 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_420px_in720p"
+    android:layout_height="wrap_content"
+    android:background="@drawable/djtbg_03"
+    android:orientation="vertical" >
+      <TextView
+        android:id="@+id/location_address"
+        android:layout_width="@dimen/_400px_in720p"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_40px_in720p"
+        android:paddingRight="@dimen/_20px_in720p"
+        android:gravity="center"
+       android:layout_marginTop="@dimen/_30px_in720p"
+        android:textColor="#333333"
+        android:textSize="@dimen/_24px_in720p"
+        android:text="车次：ZXX" />
+    <TextView
+        android:id="@+id/xingbie"
+        android:layout_width="@dimen/_400px_in720p"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_40px_in720p"
+        android:paddingRight="@dimen/_20px_in720p"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10px_in720p"
+        android:textColor="#333333"
+        android:textSize="@dimen/_24px_in720p"
+        android:text="行别：上行" />
+    <TextView
+        android:id="@+id/speed"
+        android:layout_width="@dimen/_400px_in720p"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_40px_in720p"
+        android:paddingRight="@dimen/_20px_in720p"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10px_in720p"
+        android:textColor="#333333"
+        android:textSize="@dimen/_24px_in720p"
+        android:text="速度：Xkm/h" />
+    <TextView
+        android:id="@+id/haiba"
+        android:layout_width="@dimen/_400px_in720p"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_40px_in720p"
+        android:paddingRight="@dimen/_20px_in720p"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10px_in720p"
+        android:textColor="#333333"
+        android:textSize="@dimen/_24px_in720p"
+        android:text="海拔：xxxxm" />
+    <TextView
+        android:id="@+id/statu"
+        android:layout_width="@dimen/_400px_in720p"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_40px_in720p"
+        android:paddingRight="@dimen/_20px_in720p"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10px_in720p"
+        android:textColor="#333333"
+        android:textSize="@dimen/_24px_in720p"
+        android:text="运行状态：正常" />
+    <TextView
+        android:id="@+id/location_time"
+         android:layout_width="@dimen/_400px_in720p"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/_20px_in720p"
+     android:paddingLeft="@dimen/_40px_in720p"
+    android:gravity="center"
+        android:layout_marginTop="@dimen/_10px_in720p"
+     android:paddingBottom="@dimen/_40px_in720p"
+    android:textColor="#333333"
+    android:textSize="@dimen/_24px_in720p"
+    android:text="上报时间：2015-12-10 22:11:11"
+        />
+
+
+</LinearLayout>

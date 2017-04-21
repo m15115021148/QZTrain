@@ -1,0 +1,455 @@
+package com.sitemap.qingzangtrain.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.ThumbnailUtils;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
+import com.sitemap.qingzangtrain.R;
+import com.sitemap.qingzangtrain.activity.GaojingDetailsActivity;
+import com.sitemap.qingzangtrain.activity.ImageActivity;
+import com.sitemap.qingzangtrain.config.RequestCode;
+import com.sitemap.qingzangtrain.http.HttpImageUtil;
+import com.sitemap.qingzangtrain.http.HttpUtil;
+import com.sitemap.qingzangtrain.model.TroubleInfoModel;
+import com.sitemap.qingzangtrain.util.ParserUtil;
+import com.sitemap.qingzangtrain.util.SystemFunUtil;
+import com.sitemap.qingzangtrain.util.ToastUtil;
+import com.sitemap.qingzangtrain.view.RoundProgressDialog;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @desc 告警详情适配器
+ * Created by zf on 2017/2/9.
+ */
+
+public class GaoJingDetailsAdapter extends BaseAdapter{
+    private Context mContext;
+    private Holder holder;
+    private Holder1 holder1;
+    private OnCallBackLook mCallBack;
+    private int index=0;//第几个图片
+    private int pos=0;//第几行
+    private List<TroubleInfoModel> ltroubleInfo=new ArrayList<TroubleInfoModel>();
+    private String path1,path2,path3,path4,path5;
+    private HttpUtil http;//网络请求
+    private RoundProgressDialog progressDialog;//加载条
+    private SystemFunUtil videoUtil;// 视频
+    private File saveFile;//视频文件夹
+    private String path="";//文件地址
+    private boolean isloading=false;
+    private Map<String,String> paths=new HashMap<String,String>();//下载地址，文件地址
+    private final int DOWNLOAD=0x1009;
+    private int videoposition=-1;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+                case HttpUtil.SUCCESS:
+                    //获取故障（告警）列表
+                    if (msg.arg1 == RequestCode.GETVIDEO){
+                        isloading=false;
+                        Bitmap bmp = ThumbnailUtils.createVideoThumbnail(path,
+                                MediaStore.Video.Thumbnails.MINI_KIND);
+//                        holder1.video.setImageBitmap(bmp);
+                        Drawable drawable = new BitmapDrawable(bmp);
+                        holder1.video.setBackgroundDrawable(drawable);
+                        holder1.videoplay.setVisibility(View.VISIBLE);
+                        videoposition=-1;
+                        notifyDataSetChanged();
+                        if (progressDialog != null && progressDialog.isShowing()) {
+                            progressDialog.dismiss();// 关闭进度条
+                        }
+//                        if (msg.obj.toString()!=null&&!msg.obj.toString().equals("")&&!msg.obj.toString().equals("null")){
+//                            ltroubleInfo.clear();
+//                            ltroubleInfo= ParserUtil.jsonToList(msg.obj.toString(),TroubleInfoModel.class);
+//                            if (ltroubleInfo.size()>0){
+//                                Log.e("result", JSON.toJSONString(ltroubleInfo));
+////                                adapter=new GaoJingDetailsAdapter(GaojingDetailsActivity.this,ltroubleInfo);
+////                                details_list.setAdapter(adapter);
+//                            }
+//                        }
+                    }
+                    break;
+                case HttpUtil.EMPTY:
+                    break;
+                case HttpUtil.FAILURE:
+                    break;
+                case HttpUtil.LOADING:
+                    if (msg.arg1 == RequestCode.GETVIDEO) {
+                        progressDialog.setMessage("正在下载："+msg.arg2 + "%");
+                    }
+                    break;
+                case DOWNLOAD:
+
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    public interface OnCallBackLook{
+        void onLookInfo(int pos);
+    }
+
+    public GaoJingDetailsAdapter(Context context,List<TroubleInfoModel> ltroubleInfo,SystemFunUtil videoUtil){
+        this.mContext = context;
+        this.ltroubleInfo=ltroubleInfo;
+        this.videoUtil=videoUtil;
+        if (http == null){
+            http = new HttpUtil(handler);
+        }
+        saveFile = videoUtil.createRootDirectory("qingzangvideo");
+    }
+
+    @Override
+    public int getCount() {
+        return ltroubleInfo.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return ltroubleInfo.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.gaojing_details_item,null);
+            holder = new Holder();
+            holder.date = (TextView) convertView.findViewById(R.id.date);
+            holder.date_ri = (TextView) convertView.findViewById(R.id.date_ri);
+            holder.text = (TextView) convertView.findViewById(R.id.text);
+            holder.state = (TextView) convertView.findViewById(R.id.state);
+            holder.timeimg = (TextView) convertView.findViewById(R.id.timeimg);
+            holder.isjieshou = (TextView) convertView.findViewById(R.id.isjieshou);
+            holder.xiantou = (View) convertView.findViewById(R.id.xiantou);
+            holder.xianwei = (View) convertView.findViewById(R.id.xianwei);
+            holder.xiafa_details_list = (LinearLayout) convertView.findViewById(R.id.xiafa_details_list);
+            holder.jiantoulay = (LinearLayout) convertView.findViewById(R.id.jiantoulay);
+
+            convertView.setTag(holder);
+        if (position==0){
+            holder.xiantou.setVisibility(View.INVISIBLE);
+            holder.jiantoulay.setVisibility(View.GONE);
+        }
+        if (ltroubleInfo.size()>=2){
+        if (position==ltroubleInfo.size()-2){
+            holder.xianwei.setBackgroundColor(Color.parseColor("#1c96f5"));
+            holder.jiantoulay.setVisibility(View.GONE);
+        }
+        if (position==ltroubleInfo.size()-1){
+            holder.xiantou.setBackgroundColor(Color.parseColor("#1c96f5"));
+            holder.xianwei.setVisibility(View.INVISIBLE);
+            holder.timeimg.setBackgroundResource(R.drawable.time_06);
+//            holder1.imglay.setVisibility(View.GONE);
+        }
+        }else {
+            holder.xiantou.setBackgroundColor(Color.parseColor("#1c96f5"));
+            holder.xianwei.setVisibility(View.INVISIBLE);
+            holder.timeimg.setBackgroundResource(R.drawable.time_06);
+        }
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+
+
+        if (ltroubleInfo.get(position).getProcessList().size()>0){
+            for (int i = 0; i <ltroubleInfo.get(position).getProcessList().size() ; i++) {
+                View tableView = getTableView(mContext,position,i);
+                holder1.context.setText(ltroubleInfo.get(position).getProcessList().get(i).getProcessTitle());
+                if (ltroubleInfo.get(position).getProcessList().get(i).getProcessNote().equals("")||ltroubleInfo.get(position).getProcessList().get(i).getProcessNote()==null){
+                    holder1.yuanyin.setVisibility(View.GONE);
+                }else {
+                holder1.yuanyin.setText(ltroubleInfo.get(position).getProcessList().get(i).getProcessNote());
+                }
+                holder1.yue.setText(ltroubleInfo.get(position).getProcessList().get(i).getProcessTime());
+                if (ltroubleInfo.get(position).getProcessList().get(i).getProcessImg()==null||ltroubleInfo.get(position).getProcessList().get(i).getProcessImg().equals("")||ltroubleInfo.get(position).getProcessList().get(i).getProcessImg().equals("null")){
+                    holder1.imglay.setVisibility(View.GONE);
+                }else{
+                    String [] limg=ltroubleInfo.get(position).getProcessList().get(i).getProcessImg().split(";");
+//                    Log.e("result","size_"+limg.length);
+                    switch (limg.length){
+                        case 0:
+                            holder1.imglay.setVisibility(View.GONE);
+                            break;
+                        case 1:
+                            HttpImageUtil.loadImage(holder1.img1,limg[0]);
+                            path1=limg[0];
+                            holder1.img2.setVisibility(View.GONE);
+                            holder1.img3.setVisibility(View.GONE);
+                            holder1.img4.setVisibility(View.GONE);
+                            holder1.img5.setVisibility(View.GONE);
+                            break;
+                        case 2:
+                            HttpImageUtil.loadImage(holder1.img1,limg[0]);
+                            HttpImageUtil.loadImage(holder1.img2,limg[1]);
+                            path1=limg[0];
+                            path2=limg[1];
+                            holder1.img3.setVisibility(View.GONE);
+                            holder1.img4.setVisibility(View.GONE);
+                            holder1.img5.setVisibility(View.GONE);
+                            break;
+                        case 3:
+                            HttpImageUtil.loadImage(holder1.img1,limg[0]);
+                            HttpImageUtil.loadImage(holder1.img2,limg[1]);
+                            HttpImageUtil.loadImage(holder1.img3,limg[2]);
+                            path1=limg[0];
+                            path2=limg[1];
+                            path3=limg[2];
+                            holder1.img4.setVisibility(View.GONE);
+                            holder1.img5.setVisibility(View.GONE);
+                            break;
+                        case 4:
+                            HttpImageUtil.loadImage(holder1.img1,limg[0]);
+                            HttpImageUtil.loadImage(holder1.img2,limg[1]);
+                            HttpImageUtil.loadImage(holder1.img3,limg[2]);
+                            HttpImageUtil.loadImage(holder1.img4,limg[3]);
+                            path1=limg[0];
+                            path2=limg[1];
+                            path3=limg[2];
+                            path4=limg[3];
+                            holder1.img5.setVisibility(View.GONE);
+                            break;
+                        case 5:
+                            HttpImageUtil.loadImage(holder1.img1,limg[0]);
+                            HttpImageUtil.loadImage(holder1.img2,limg[1]);
+                            HttpImageUtil.loadImage(holder1.img3,limg[2]);
+                            HttpImageUtil.loadImage(holder1.img4,limg[3]);
+                            HttpImageUtil.loadImage(holder1.img5,limg[4]);
+                            path1=limg[0];
+                            path2=limg[1];
+                            path3=limg[2];
+                            path4=limg[3];
+                            path5=limg[4];
+                            break;
+                    }
+//                    if (limg.length>0){
+//
+//                    }else{
+//                        holder1.imglay.setVisibility(View.GONE);
+//                    }
+                }
+                if (ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo()!=null&&!ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().equals("")&&!ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().equals("null")){
+//                   Log.i("jack","save:"+ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().substring(ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().lastIndexOf("/"))) ;
+                    path=saveFile+ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().substring(ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().lastIndexOf("/"));
+                    File video=new File(path);
+                    if (video.exists()){
+                        Bitmap bmp = ThumbnailUtils.createVideoThumbnail(path,
+                                MediaStore.Video.Thumbnails.MINI_KIND);
+                        Drawable drawable = new BitmapDrawable(bmp);
+                        holder1.video.setBackgroundDrawable(drawable);
+                        holder1.videoplay.setVisibility(View.VISIBLE);
+                    }
+                }else {
+                    holder1.videolay.setVisibility(View.GONE);
+                }
+                holder.xiafa_details_list.addView(tableView,params);
+            }
+
+        }else {
+            holder.xiafa_details_list.setVisibility(View.GONE);
+        }
+
+
+
+        holder.date.setText(ltroubleInfo.get(position).getTime().substring(10));
+        holder.date_ri.setText(ltroubleInfo.get(position).getTime().substring(0,10));
+        holder.text.setText(ltroubleInfo.get(position).getProcessInfo());
+        if (ltroubleInfo.get(position).getProcessInfo().equals("尚未接收到信息")){
+            holder.isjieshou.setVisibility(View.VISIBLE);
+            holder.isjieshou.setText("尚未接收到信息");
+        }
+        switch(Integer.parseInt(ltroubleInfo.get(position).getProcessName())){
+            case 0:
+                holder.state.setText("未下发");
+                holder.state.setTextColor(Color.parseColor("#d8211e"));
+                break;
+            case 1:
+                holder.state.setText("下发中");
+                holder.state.setTextColor(Color.parseColor("#ec760d"));
+                break;
+            case 2:
+                holder.state.setText("已下发");
+                holder.state.setTextColor(Color.parseColor("#23c975"));
+                break;
+            case 3:
+                holder.state.setText("反馈确认待检修指派");
+                holder.state.setTextColor(Color.parseColor("#d8211e"));
+                break;
+            case 4:
+                holder.state.setText("反馈误报");
+                holder.state.setTextColor(Color.parseColor("#23c975"));
+                break;
+            case 5:
+                holder.state.setText("已指派待检修");
+                holder.state.setTextColor(Color.parseColor("#ec760d"));
+                break;
+            case 6:
+                holder.state.setText("检修反馈确认");
+                holder.state.setTextColor(Color.parseColor("#23c975"));
+                break;
+            case 7:
+                holder.state.setText("未核实");
+                holder.state.setTextColor(Color.parseColor("#d8211e"));
+                break;
+        }
+//        holder.look.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mCallBack!=null){
+//                    mCallBack.onLookInfo(position);
+//                }
+//            }
+//        });
+
+        return convertView;
+    }
+
+    private class Holder{
+        TextView date,date_ri,text;//时间，日期，显示内容
+        TextView state;//完成状态
+        View xiantou,xianwei;//线头部和尾部
+        TextView timeimg;//时间图片
+        TextView isjieshou;//是否收到隐藏布局
+        LinearLayout xiafa_details_list,jiantoulay;//表格布局,箭头布局
+    }
+    private class Holder1{
+        TextView context,yue,yuanyin,videoplay,video;//内容，年月，时间，原因
+        LinearLayout imglay,videolay;//图片整体布局,视频布局
+        ImageView img1,img2,img3,img4,img5;
+    }
+
+    public View getTableView(final Context context, final int position,final int i){
+        View view = LayoutInflater.from(context).inflate(R.layout.include_xiafa_details_item,null);
+        holder1=new Holder1();
+        holder1.context=(TextView)view.findViewById(R.id.context) ;
+        holder1.yue=(TextView)view.findViewById(R.id.yue) ;
+        holder1.yuanyin=(TextView)view.findViewById(R.id.yuanyin) ;
+        holder1.videoplay=(TextView)view.findViewById(R.id.videoplay) ;
+        holder1.imglay=(LinearLayout)view.findViewById(R.id.imglay);
+        holder1.videolay=(LinearLayout)view.findViewById(R.id.videolay);
+        holder1.img1=(ImageView)view.findViewById(R.id.img1);
+        holder1.img2=(ImageView)view.findViewById(R.id.img2);
+        holder1.img3=(ImageView)view.findViewById(R.id.img3);
+        holder1.img4=(ImageView)view.findViewById(R.id.img4);
+        holder1.img5=(ImageView)view.findViewById(R.id.img5);
+        holder1.video=(TextView)view.findViewById(R.id.video);
+        final String [] limg=ltroubleInfo.get(position).getProcessList().get(i).getProcessImg().split(";");
+        holder1.img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                index=1;
+//                ToastUtil.showCenterShort(mContext,"点击了第"+position+"行,第"+index+"张图片");
+                Intent intent=new Intent(context, ImageActivity.class);
+                intent.putExtra("path",limg[0]);
+                context.startActivity(intent);
+            }
+        });
+        holder1.img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                index=2;
+                Intent intent=new Intent(context, ImageActivity.class);
+                intent.putExtra("path",limg[1]);
+                context.startActivity(intent);
+//                ToastUtil.showCenterShort(mContext,"点击了第"+position+"行,第"+index+"张图片");
+            }
+        });
+        holder1.img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                index=3;
+                Intent intent=new Intent(context, ImageActivity.class);
+                intent.putExtra("path",limg[2]);
+                context.startActivity(intent);
+//                ToastUtil.showCenterShort(mContext,"点击了第"+position+"行,第"+index+"张图片");
+            }
+        });
+        holder1.img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                index=4;
+                Intent intent=new Intent(context, ImageActivity.class);
+                intent.putExtra("path",limg[3]);
+                context.startActivity(intent);
+//                ToastUtil.showCenterShort(mContext,"点击了第"+position+"行,第"+index+"张图片");
+            }
+        });
+        holder1.img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                index=5;
+                Intent intent=new Intent(context, ImageActivity.class);
+                intent.putExtra("path",limg[4]);
+                context.startActivity(intent);
+//                ToastUtil.showCenterShort(mContext,"点击了第"+position+"行,第"+index+"张图片");
+            }
+        });
+        holder1.video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isloading){
+                    ToastUtil.showBottomShort(mContext,"正在下载视频，请稍后...");
+                    return;
+                }else {
+                    Log.i("jack","position:"+position);
+                    videoposition=position;
+                    progressDialog = RoundProgressDialog.createDialog(mContext);
+                    if (progressDialog != null && !progressDialog.isShowing()) {
+                        progressDialog.setMessage("正在下载...");
+                        progressDialog.show();
+                    }
+                    path=saveFile+ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().substring(ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().lastIndexOf("/"));
+                    File video=new File(path);
+                        isloading=true;
+//                        paths.put(ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo(),path);
+//                        Log.i("jack","path:"+path);
+
+                        http.downloadFile(RequestCode.GETVIDEO,ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo(),path);
+
+                }
+            }
+        });
+        holder1.videoplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                path=saveFile+ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().substring(ltroubleInfo.get(position).getProcessList().get(i).getProcessVideo().lastIndexOf("/"));
+                File video=new File(path);
+                videoUtil.playerMedia(path,1);
+            }
+        });
+        return view;
+    }
+
+}

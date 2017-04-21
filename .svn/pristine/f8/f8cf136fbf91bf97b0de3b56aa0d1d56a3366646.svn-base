@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/check_box"
+        style="@style/TextFilterStyle"
+        android:layout_marginBottom="@dimen/_40px_in720p"
+        android:text="全部" />
+
+</LinearLayout>

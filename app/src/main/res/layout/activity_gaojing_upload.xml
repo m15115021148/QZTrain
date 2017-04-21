@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_deal_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.GaojingDealDetailsActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/deal_sure"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80px_in720p"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_20px_in720p"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:background="@drawable/submit_bg"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_35px_in720p" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_120px_in720p"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/include_comment_gaojing_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20px_in720p"
+                    />
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_10px_in720p"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextCommentStyle"
+                        android:text="告警描述" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2px_in720p"
+                        android:layout_marginLeft="@dimen/_20px_in720p"
+                        android:layout_marginRight="@dimen/_20px_in720p"
+                        android:background="@color/grey_dan"
+                        />
+
+                </LinearLayout>
+
+                <com.sitemap.qingzangtrain.view.MyGridView
+                    android:background="@null"
+                    android:id="@+id/result_gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="2"
+                    android:scrollbars="none" />
+
+                <EditText
+                    android:id="@+id/deal_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120px_in720p"
+                    android:layout_marginLeft="@dimen/_20px_in720p"
+                    android:layout_marginRight="@dimen/_20px_in720p"
+                    android:layout_marginTop="@dimen/_20px_in720p"
+                    android:background="@drawable/credit_report_edit_bg"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:hint="备注(选填)"
+                    android:maxLines="10"
+                    android:paddingLeft="@dimen/_10px_in720p"
+                    android:textSize="@dimen/_30px_in720p" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_30px_in720p"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/TextCommentStyle"
+                            android:text="现场" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2px_in720p"
+                            android:layout_marginLeft="@dimen/_20px_in720p"
+                            android:layout_marginRight="@dimen/_20px_in720p"
+                            android:background="@color/pop_txt_bg" />
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/_20px_in720p"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120px_in720p"
+                        >
+                        <TextView
+                            android:id="@+id/photo"
+                            android:layout_width="@dimen/_120px_in720p"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/photo"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/_20px_in720p"/>
+
+                        <TextView
+                            android:layout_marginLeft="@dimen/_20px_in720p"
+                            android:textSize="@dimen/_30px_in720p"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/photo"
+                            android:textColor="@color/grey"
+                            android:text="现场拍照"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginRight="@dimen/_20px_in720p"
+                            android:textSize="@dimen/_30px_in720p"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/video"
+                            android:textColor="@color/grey"
+                            android:text="现场录制视频"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/video"
+                            android:layout_width="@dimen/_120px_in720p"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/video"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="10dp" />
+                    </RelativeLayout>
+
+                    <com.sitemap.qingzangtrain.view.MyGridView
+                        android:id="@+id/deal_gridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="5"
+                        android:scrollbars="none" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</LinearLayout>

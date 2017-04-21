@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_guzhang"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.DataCheckActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:text="故障类型" />
+
+            <GridView
+                android:id="@+id/type_grid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_240px_in720p"
+                android:layout_margin="@dimen/_20px_in720p"
+                android:numColumns="3"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"
+                android:background="@color/grey_dan" />
+
+            <LinearLayout
+                android:layout_margin="@dimen/_40px_in720p"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车次" />
+
+                    <TextView
+                        android:id="@+id/checi"
+                        android:layout_width="@dimen/_196px_in720p"
+                        android:layout_height="@dimen/_56px_in720p"
+                        android:layout_marginTop="@dimen/_20px_in720p"
+                        android:background="@drawable/jtbg_03"
+                        android:gravity="center"
+                        android:text="全部"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_30px_in720p"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车厢编号" />
+
+                    <TextView
+                        android:id="@+id/carriageNum"
+                        android:layout_width="@dimen/_196px_in720p"
+                        android:layout_height="@dimen/_56px_in720p"
+                        android:layout_marginTop="@dimen/_20px_in720p"
+                        android:background="@drawable/jtbg_03"
+                        android:gravity="center"
+                        android:text="全部"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"
+                android:background="@color/grey_dan" />
+
+            <!--运行区间-->
+            <LinearLayout
+                android:layout_margin="@dimen/_40px_in720p"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="运行区间" />
+
+                <TextView
+                    android:paddingLeft="@dimen/_10px_in720p"
+                    android:id="@+id/run_qujian"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60px_in720p"
+                    android:layout_marginTop="@dimen/_20px_in720p"
+                    android:background="@drawable/run_bg"
+                    android:gravity="left|center_vertical"
+                    android:text="全部"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"
+                android:background="@color/grey_dan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:text="停留区间" />
+
+            <GridView
+                android:id="@+id/stop_qujian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20px_in720p"
+                android:layout_marginRight="@dimen/_20px_in720p"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:numColumns="3"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:background="@color/grey_dan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:text="故障等级" />
+
+            <GridView
+                android:id="@+id/dengji_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20px_in720p"
+                android:layout_marginRight="@dimen/_20px_in720p"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:numColumns="3"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:background="@color/grey_dan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:text="时间区间" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/check_s_time"
+                    android:layout_width="@dimen/_306px_in720p"
+                    android:layout_height="@dimen/_56px_in720p"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_40px_in720p"
+                    android:layout_marginRight="@dimen/_40px_in720p"
+                    android:layout_weight="1"
+                    android:background="@drawable/qz_07"
+                    android:gravity="center"
+                    android:hint="请选择"
+                    android:singleLine="true"
+                    android:textColor="@color/black_dan"
+                    android:textColorHint="@color/txt_hui"
+                    android:textSize="@dimen/_30px_in720p" />
+
+                <TextView
+                    android:id="@+id/check_e_time"
+                    android:layout_width="@dimen/_306px_in720p"
+                    android:layout_height="@dimen/_56px_in720p"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_40px_in720p"
+                    android:layout_marginRight="@dimen/_40px_in720p"
+                    android:layout_weight="1"
+                    android:background="@drawable/qz_07"
+                    android:gravity="center"
+                    android:hint="请选择"
+                    android:singleLine="true"
+                    android:textColor="@color/black_dan"
+                    android:textColorHint="@color/txt_hui"
+                    android:textSize="@dimen/_30px_in720p" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/check"
+                android:layout_width="@dimen/_640px_in720p"
+                android:layout_height="@dimen/_80px_in720p"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:layout_marginBottom="@dimen/_40px_in720p"
+                android:background="@drawable/qzb_65"
+                android:gravity="center"
+                android:text="查询"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

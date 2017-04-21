@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60px_in720p"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/type"
+            style="@style/TextHistoryListStyle"
+            android:text="管理员" />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextHistoryListStyle"
+            android:layout_weight="1.1"
+            android:text="点点滴的" />
+
+        <TextView
+            android:id="@+id/tel"
+            style="@style/TextHistoryListStyle"
+            android:layout_weight="2"
+            android:textColor="@color/lan_dan"
+            android:text="15190892211" />
+
+        <TextView
+            android:id="@+id/state"
+            style="@style/TextHistoryListStyle"
+            android:text="已派单"
+            android:textColor="@color/mediumseagreen" />
+
+    </LinearLayout>
+
+</LinearLayout>

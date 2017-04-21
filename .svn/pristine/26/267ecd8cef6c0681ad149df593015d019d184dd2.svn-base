@@ -1,0 +1,54 @@
+package com.sitemap.qingzangtrain.model;
+
+/**
+ * Created by Administrator on 2017/2/10.
+ * 进度详情
+ */
+
+public class ProcessListModel {
+    private String processTitle;//     进度标题
+    private String processNote;//     进度备注
+    private String processTime;//     进度时间
+    private String processImg;//      进度图片地址（多张图片以”;”进行分隔）
+    private String processVideo;//短视频地址
+
+    public String getProcessVideo() {
+        return processVideo;
+    }
+
+    public void setProcessVideo(String processVideo) {
+        this.processVideo = processVideo;
+    }
+
+    public String getProcessTitle() {
+        return processTitle;
+    }
+
+    public void setProcessTitle(String processTitle) {
+        this.processTitle = processTitle;
+    }
+
+    public String getProcessNote() {
+        return processNote;
+    }
+
+    public void setProcessNote(String processNote) {
+        this.processNote = processNote;
+    }
+
+    public String getProcessTime() {
+        return processTime;
+    }
+
+    public void setProcessTime(String processTime) {
+        this.processTime = processTime;
+    }
+
+    public String getProcessImg() {
+        return processImg;
+    }
+
+    public void setProcessImg(String processImg) {
+        this.processImg = processImg;
+    }
+}

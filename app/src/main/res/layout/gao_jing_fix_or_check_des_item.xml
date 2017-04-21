@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80px_in720p"
+        android:layout_marginBottom="@dimen/_10px_in720p"
+        android:layout_marginLeft="@dimen/_20px_in720p"
+        android:layout_marginRight="@dimen/_20px_in720p"
+        android:layout_marginTop="@dimen/_10px_in720p"
+        android:background="@drawable/filter_text_bg"
+        android:button="@null"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="误报"
+        android:textColor="@drawable/fix_check_des_color"
+        android:textSize="@dimen/_30px_in720p" />
+
+</LinearLayout>

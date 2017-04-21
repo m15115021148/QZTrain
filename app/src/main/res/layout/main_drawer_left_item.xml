@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120px_in720p"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/_50px_in720p"
+            android:layout_height="@dimen/_50px_in720p"
+            android:layout_marginLeft="@dimen/_45px_in720p"
+            android:src="@drawable/qz_39"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:layout_marginLeft="@dimen/_30px_in720p"
+            android:textSize="@dimen/_34px_in720p"
+            android:text="历史数据"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1px_in720p"
+        android:background="@color/grey_dan" />
+
+</LinearLayout>

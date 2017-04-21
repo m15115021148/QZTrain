@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/_120px_in720p"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/xiantou"
+            android:layout_width="@dimen/_2px_in720p"
+            android:layout_height="@dimen/_24px_in720p"
+            android:background="@color/grey_dan" />
+
+        <TextView
+            android:id="@+id/timeimg"
+            android:layout_width="@dimen/_52px_in720p"
+            android:layout_height="@dimen/_52px_in720p"
+            android:background="@drawable/time_03" />
+
+        <View
+            android:id="@+id/xianwei"
+            android:layout_width="@dimen/_2px_in720p"
+            android:layout_height="match_parent"
+            android:background="@color/grey_dan" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/isjieshou"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120px_in720p"
+        android:layout_marginBottom="@dimen/_20px_in720p"
+        android:layout_marginTop="@dimen/_30px_in720p"
+        android:background="@color/white"
+        android:text="维修员未接收"
+        android:textColor="#e46251"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120px_in720p"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/_400px_in720p"
+                android:layout_height="@dimen/_120px_in720p"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_52px_in720p"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_36px_in720p"
+                        android:background="@drawable/timebg"
+                        android:text="10:36:20"
+                        android:textSize="@dimen/_32px_in720p" />
+
+                    <TextView
+                        android:id="@+id/date_ri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_28px_in720p"
+                        android:layout_alignBottom="@+id/date"
+                        android:layout_marginLeft="@dimen/_20px_in720p"
+                        android:layout_toRightOf="@+id/date"
+                        android:background="@drawable/timebg"
+                        android:text="2017-2-6"
+                        android:textSize="@dimen/_24px_in720p" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_80px_in720p">
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="列车员接收下发任务"
+                        android:textColor="#cccccc"
+                        android:textSize="@dimen/_24px_in720p" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120px_in720p"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_30px_in720p"
+                    android:layout_marginTop="@dimen/_30px_in720p"
+                    android:text="已下发"
+                    android:textSize="@dimen/_26px_in720p" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jiantoulay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="@dimen/_16px_in720p"
+                android:layout_height="@dimen/_8px_in720p"
+                android:layout_marginLeft="@dimen/_30px_in720p"
+                android:background="@drawable/jt_06" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/xiafa_details_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30px_in720p"
+            android:background="@color/grey_dan"
+            android:orientation="vertical">
+            <!--
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/include_xiafa_details_item"
+                />
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/include_xiafa_details_item"
+                />
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/include_xiafa_details_item"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20px_in720p"
+                android:background="@color/white"/>
+                -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

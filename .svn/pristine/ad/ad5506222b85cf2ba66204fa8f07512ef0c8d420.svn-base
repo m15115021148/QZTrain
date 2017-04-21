@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <include
+        android:id="@+id/set_title"
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20px_in720p"
+        android:background="@color/pop_txt_bg" />
+    <!--
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100px_in720p">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_20px_in720p"
+                android:text="消息推送" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_40px_in720p"
+                android:text="开启"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/set_push"
+                android:layout_width="@dimen/_120px_in720p"
+                android:layout_height="@dimen/_50px_in720p"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_20px_in720p"
+                android:background="@drawable/jpush_off_bg"
+                android:button="@null"
+                android:checked="true" />
+        </RelativeLayout>
+    -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2px_in720p"
+        android:background="@color/pop_txt_bg" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100px_in720p">
+        <TextView
+            android:id="@+id/phoneimg"
+            android:layout_width="@dimen/_36px_in720p"
+            android:layout_height="@dimen/_36px_in720p"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:text=""
+            android:background="@drawable/phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/phoneimg"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_26px_in720p"
+            android:text="联系电话" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_24px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:textColor="#cccccc"
+            android:text="XXX" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2px_in720p"
+        android:background="@color/pop_txt_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100px_in720p">
+        <TextView
+            android:id="@+id/emailimg"
+            android:layout_width="@dimen/_36px_in720p"
+            android:layout_height="@dimen/_36px_in720p"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:text=""
+            android:background="@drawable/email"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/emailimg"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_26px_in720p"
+            android:text="电子邮箱" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_24px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:textColor="#cccccc"
+            android:text="XXX@XXX" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2px_in720p"
+        android:background="@color/pop_txt_bg" /> <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_100px_in720p">
+    <TextView
+        android:id="@+id/internetimg"
+        android:layout_width="@dimen/_36px_in720p"
+        android:layout_height="@dimen/_36px_in720p"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/_20px_in720p"
+        android:text=""
+        android:background="@drawable/internet"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/internetimg"
+        android:layout_marginLeft="@dimen/_20px_in720p"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/_26px_in720p"
+        android:text="官方网站" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/_24px_in720p"
+        android:layout_marginRight="@dimen/_20px_in720p"
+        android:textColor="#cccccc"
+        android:text="XXX" />
+
+</RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2px_in720p"
+        android:background="@color/pop_txt_bg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pop_txt_bg">
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/_24px_in720p"
+            android:layout_marginBottom="@dimen/_60px_in720p"
+            android:textColor="#333333"
+            android:text="v1.0.0" />
+        <TextView
+            android:id="@+id/pingtai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/version"
+            android:textSize="@dimen/_28px_in720p"
+            android:layout_marginBottom="@dimen/_20px_in720p"
+            android:textColor="#333333"
+            android:text="列车行车监控分析平台" />
+        <TextView
+            android:id="@+id/qingzang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/pingtai"
+            android:textSize="@dimen/_24px_in720p"
+            android:layout_marginBottom="@dimen/_20px_in720p"
+            android:textColor="#e46251"
+            android:text="青藏线" />
+        <TextView
+            android:layout_width="@dimen/_80px_in720p"
+            android:layout_height="@dimen/_80px_in720p"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/qingzang"
+            android:textSize="@dimen/_24px_in720p"
+            android:background="@drawable/qingzang"
+            android:layout_marginBottom="@dimen/_20px_in720p"
+            android:textColor="#e46251"
+            />
+    </RelativeLayout>
+</LinearLayout>

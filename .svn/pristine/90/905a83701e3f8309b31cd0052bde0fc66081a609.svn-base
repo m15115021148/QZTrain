@@ -1,0 +1,182 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- 窗口样式 -->
+    <style name="FloatingBuy" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:windowBackground">@color/transparency</item>　　
+        <item name="android:windowIsTranslucent">true</item>　　　
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/main_entry</item>
+        <item name="android:activityOpenExitAnimation">@anim/main_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/bottom_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/bottom_exit</item>
+    </style>
+
+    <style name="Train_item_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_35px_in720p</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/train_item_bg</item>
+    </style>
+
+    <style name="Train_radio_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/_4px_in720p</item>
+        <item name="android:layout_marginTop">@dimen/_4px_in720p</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/_29px_in720p</item>
+        <item name="android:textColor">@drawable/rb_checked_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">@dimen/_10px_in720p</item>
+        <item name="android:paddingTop">@dimen/_10px_in720p</item>
+        <item name="android:paddingLeft">@dimen/_25px_in720p</item>
+        <item name="android:paddingRight">@dimen/_25px_in720p</item>
+    </style>
+
+    <!-- 圆形dialog -->
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="CustomProgressDialog" parent="@style/CustomDialog">
+        <item name="android:windowBackground">@color/transparency</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ChangeDialog" parent="@style/CustomDialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TextCommentStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/_32px_in720p</item>
+        <item name="android:textColor">@color/black_dan</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginLeft">@dimen/_20px_in720p</item>
+    </style>
+
+    <style name="PupDownToUp" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="PupUpToDown" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_top_in</item>
+        <item name="android:windowExitAnimation">@anim/push_top_out</item>
+    </style>
+
+    <style name="PupLeftToRight" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_left_in</item>
+        <item name="android:windowExitAnimation">@anim/push_left_out</item>
+    </style>
+
+    <style name="PupRightToLeft" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_right_in</item>
+        <item name="android:windowExitAnimation">@anim/push_right_out</item>
+    </style>
+
+    <style name="TextHistoryStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/_25px_in720p</item>
+        <item name="android:textColor">@color/black_dan</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="TextHistoryListStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/_25px_in720p</item>
+        <item name="android:textColor">@color/black_dan</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/power_supply_lv_bg</item>
+    </style>
+
+    <!--筛选-->
+    <style name="TextFilterStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/_370px_in720p</item>
+        <item name="android:textSize">@dimen/_26px_in720p</item>
+        <item name="android:textColor">@drawable/filter_text_color</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/_20px_in720p</item>
+        <item name="android:paddingRight">@dimen/_20px_in720p</item>
+        <item name="android:paddingTop">@dimen/_20px_in720p</item>
+        <item name="android:paddingBottom">@dimen/_20px_in720p</item>
+        <item name="android:background">@drawable/filter_text_bg</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="DataZhouWenTitleStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/_30px_in720p</item>
+        <item name="android:background">@drawable/power_supply_lv_bg</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/_5px_in720p</item>
+        <item name="android:paddingBottom">@dimen/_5px_in720p</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="DataZhouWenRelayoutStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@drawable/power_supply_lv_bg</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="DataZhouWenTemStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/_30px_in720p</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="DataZhouWenImgStyle">
+        <item name="android:layout_height">@dimen/_25px_in720p</item>
+        <item name="android:layout_width">@dimen/_25px_in720p</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_margin">@dimen/_5px_in720p</item>
+    </style>
+
+
+    <style name="TimeDateStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+</resources>

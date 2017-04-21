@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+>
+
+
+    <LinearLayout
+        android:id="@+id/login_fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_350px_in720p"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:textIsSelectable="true"
+                android:id="@+id/login_mac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="c4:07:2f:dc:0c:17"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_45px_in720p" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="该设备的唯一标识符"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_30px_in720p" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/_10px_in720p"
+            android:padding="@dimen/_20px_in720p"
+            android:textColor="@color/black_dan"
+            android:textSize="@dimen/_35px_in720p" />
+
+        <LinearLayout
+            android:id="@+id/login_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_150px_in720p"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_20px_in720p">
+
+            <ImageView
+                android:layout_width="@dimen/_35px_in720p"
+                android:layout_height="@dimen/_35px_in720p"
+                android:background="@drawable/login_tel" />
+
+            <TextView
+                android:id="@+id/telphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10px_in720p"
+                android:text="021-38748327"
+                android:textColor="@color/black_dan"
+                android:textSize="@dimen/_40px_in720p" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="如有疑问，请联系系统管理员"
+            android:textColor="@color/txt_hui"
+            android:textSize="@dimen/_28px_in720p" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

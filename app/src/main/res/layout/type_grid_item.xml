@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/type_grid_name"
+        android:layout_width="@dimen/_196px_in720p"
+        android:layout_height="@dimen/_56px_in720p"
+        android:layout_marginBottom="@dimen/_20px_in720p"
+        android:layout_marginLeft="@dimen/_20px_in720p"
+        android:layout_marginRight="@dimen/_20px_in720p"
+        android:background="@drawable/qz_32"
+        android:gravity="center"
+        android:textColor="#333333" />
+
+</LinearLayout>

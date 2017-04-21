@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.MainBottomActivity">
+
+    <LinearLayout
+        android:id="@+id/menu_bottom"
+        android:layout_width="@dimen/_200px_in720p"
+        android:layout_height="@dimen/_60px_in720p"
+        android:layout_marginTop="@dimen/_20px_in720p"
+        android:background="@drawable/bottom_alarm"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/menu_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="列车状态"
+            android:textColor="@color/red_txt"
+            android:textSize="@dimen/_30px_in720p" />
+
+        <ImageView
+            android:layout_width="@dimen/_17px_in720p"
+            android:layout_height="@dimen/_14px_in720p"
+            android:layout_marginLeft="@dimen/_15px_in720p"
+            android:background="@drawable/bottom_down" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20px_in720p"
+        android:background="@drawable/power_supply_lv_bg">
+
+        <GridView
+            android:id="@+id/main_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="4"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20px_in720p"
+        android:layout_marginRight="@dimen/_20px_in720p"
+        android:background="@drawable/power_supply_lv_bg">
+
+        <GridView
+            android:id="@+id/bottom_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="5"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40px_in720p"
+        android:background="@color/white" />
+
+</LinearLayout>

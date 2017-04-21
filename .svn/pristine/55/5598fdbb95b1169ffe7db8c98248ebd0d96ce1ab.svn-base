@@ -1,0 +1,69 @@
+package com.sitemap.qingzangtrain.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.sitemap.qingzangtrain.R;
+
+/**
+ * @desc 首页 底部 适配器
+ * Created by chenmeng on 2017/2/24.
+ */
+
+public class BottomTopAdapter extends BaseAdapter{
+    private Context mContext;
+    private String[] values = {"供电","轴温","制动","防滑器"};
+    private int[] keys = {
+            R.drawable.gongdian_bg,R.drawable.zhouwen_bg,R.drawable.zhidong_bg,R.drawable.fanghuaqi_bg
+    };
+    private Holder holder;
+
+    public BottomTopAdapter(Context context){
+        this.mContext = context;
+    }
+
+
+    @Override
+    public int getCount() {
+        return values.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return values[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null){
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.bottom_top_item,null);
+            holder = new Holder();
+            holder.img = (ImageView) convertView.findViewById(R.id.img);
+            holder.txt = (TextView) convertView.findViewById(R.id.txt);
+            holder.num = (TextView) convertView.findViewById(R.id.num);
+            convertView.setTag(holder);
+        }else{
+            holder = (Holder) convertView.getTag();
+        }
+
+        holder.img.setImageResource(keys[position]);
+        holder.txt.setText(values[position]);
+
+        return convertView;
+    }
+
+    private class Holder{
+        ImageView img;
+        TextView txt,num;
+    }
+}

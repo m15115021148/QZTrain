@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">青藏铁路</string>
+    <!-- 上拉加载下拉刷新 -->
+    <string name="pull_to_refesh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载...</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+    <string name="yanhuo">烟火</string>
+
+    <!--告警-->
+    <string name="gao_jing_repairer">历史告警</string>
+    <string name="gao_jing_history">历史告警</string>
+    <string name="gao_jing_lead">历史告警</string>
+
+    <!--历时告警 常量-->
+    <string name="trains">车次：</string>
+    <string name="carriage">车厢：</string>
+    <string name="carriageNum">车厢编号：</string>
+    <string name="trainLevel">级别：</string>
+    <string name="trainLastTime">历时：</string>
+    <string name="type_gongdian">类型：供电</string>
+    <string name="type_zhouwen">类型：轴温</string>
+    <string name="type_zhidong">类型：制动</string>
+    <string name="type_fanghuaqi">类型：防滑器</string>
+    <string name="type_yaohuo">类型：烟火</string>
+    <string name="type_chemen">类型：车门</string>
+    <string name="type_zhiyangji">类型：制氧机</string>
+    <string name="type_kongtian">类型：空调</string>
+    <string name="type_dianyuan">类型：车下电源</string>
+    <string name="type_other">类型：未知</string>
+</resources>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_220px_in720p"
+        android:background="@drawable/power_supply_lv_bg"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/DataZhouWenTitleStyle"
+                android:layout_weight="1"
+                android:text="车厢/编号" />
+
+            <TextView
+                style="@style/DataZhouWenTitleStyle"
+                android:layout_weight="3"
+                android:text="1-8号轴温+环温(℃)" />
+
+            <TextView
+                style="@style/DataZhouWenTitleStyle"
+                android:layout_weight="1"
+                android:text="时间" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/power_supply_lv_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01"
+                    android:textColor="@color/black_shen"
+                    android:textSize="@dimen/_90px_in720p" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12345678"
+                    android:textSize="@dimen/_26px_in720p" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@drawable/power_supply_lv_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_1" />
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_3" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_5" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_7" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_2" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_4" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_6" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/DataZhouWenRelayoutStyle">
+
+                            <TextView
+                                style="@style/DataZhouWenTemStyle"
+                                android:text="23" />
+
+                            <ImageView
+                                style="@style/DataZhouWenImgStyle"
+                                android:background="@drawable/tem_8" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--环温-->
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@drawable/power_supply_lv_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        style="@style/DataZhouWenTemStyle"
+                        android:text="23"
+                        android:layout_marginLeft="@dimen/_10px_in720p"/>
+
+                    <ImageView
+                        style="@style/DataZhouWenImgStyle"
+                        android:background="@drawable/tem_p" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--时间-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/power_supply_lv_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23:32:23"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_32px_in720p" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2012-08-23"
+                    android:textSize="@dimen/_25px_in720p" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

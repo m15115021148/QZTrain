@@ -1,0 +1,148 @@
+package com.sitemap.qingzangtrain.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.sitemap.qingzangtrain.R;
+import com.sitemap.qingzangtrain.adapter.WarmListAdapter;
+import com.sitemap.qingzangtrain.application.MyApplication;
+import com.sitemap.qingzangtrain.config.RequestCode;
+import com.sitemap.qingzangtrain.config.WebUrlConfig;
+import com.sitemap.qingzangtrain.http.HttpUtil;
+import com.sitemap.qingzangtrain.model.WarmsModel;
+import com.sitemap.qingzangtrain.util.DateUtil;
+import com.sitemap.qingzangtrain.util.ParserUtil;
+import com.sitemap.qingzangtrain.util.ToastUtil;
+import com.sitemap.qingzangtrain.view.RoundProgressDialog;
+
+import org.json.JSONObject;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+
+import java.util.List;
+
+/**
+ * @desc 单个告警 数据 列表 页面
+ * @author chenmeng created by 2017/2/27
+ */
+@ContentView(R.layout.activity_warm_list)
+public class WarmListActivity extends BaseActivity implements View.OnClickListener ,WarmListAdapter.OnWarmCallBack{
+    private WarmListActivity mContext;//本类
+    @ViewInject(R.id.back)
+    private LinearLayout mBack;//返回上一层
+    @ViewInject(R.id.title)
+    private TextView mTitle;//标题
+    private String title = "";//传入的标题
+    @ViewInject(R.id.listView)
+    private ListView mLv;//listview
+    private RoundProgressDialog progressDialog;//加载条
+    private HttpUtil http;//网络请求
+    private List<WarmsModel> mList;//数据
+    private String troubleType = "";//故障类型
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        initData();
+    }
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();// 关闭进度条
+            }
+            switch (msg.what){
+                case HttpUtil.SUCCESS:
+                    //获取单车故障列表
+                    if (msg.arg1 == RequestCode.GETWARMS){
+                        mList = ParserUtil.jsonToList(msg.obj.toString(), WarmsModel.class);
+                        initListView(mList);
+                    }
+                    break;
+                case HttpUtil.EMPTY:
+                    if (msg.arg1 == RequestCode.GETWARMS){
+                        MyApplication.setEmptyShowText(mContext,mLv,"暂无数据");
+                    }
+                    break;
+                case HttpUtil.FAILURE:
+                    ToastUtil.showBottomLong(mContext, RequestCode.ERRORINFO);
+                    break;
+                case HttpUtil.LOADING:
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    /**
+     * 初始化数据
+     */
+    private void initData(){
+        title = getIntent().getStringExtra("title");
+        mTitle.setText(title + "告警");
+        troubleType = getIntent().getStringExtra("troubleType");
+        mBack.setOnClickListener(this);
+        if (http == null){
+            http = new HttpUtil(handler);
+        }
+
+        getWarms(MyApplication.loginModel.getUserID(),troubleType);
+    }
+
+    /**
+     * 初始化listview数据
+     */
+    private void initListView(List<WarmsModel> list){
+        WarmListAdapter adapter = new WarmListAdapter(mContext,list,this);
+        mLv.setAdapter(adapter);
+    }
+
+    /**
+     * 获取单车故障列表
+     * @param userID
+     * @param troubleType
+     */
+    private void getWarms(String userID,String troubleType){
+        if (MyApplication.getNetObject().isNetConnected()) {
+            progressDialog = RoundProgressDialog.createDialog(this);
+            if (progressDialog != null && !progressDialog.isShowing()) {
+                progressDialog.setMessage("加载中...");
+                progressDialog.show();
+            }
+            http.sendGet(RequestCode.GETWARMS, WebUrlConfig.getWarms(userID,troubleType));
+        } else {
+            ToastUtil.showBottomShort(this, RequestCode.NOLOGIN);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mBack){
+            mContext.finish();
+        }
+    }
+
+    @Override
+    public void onLookListener(int pos) {
+        Intent intent = new Intent();
+        intent.setClass(mContext,DataPowerSupplyActivity.class);
+//        intent.putExtra("trainID",troubleId);
+//        intent.putExtra("trainStatus",troubleStatus);
+        intent.putExtra("startTime", DateUtil.getSWAHDate());
+        intent.putExtra("endTime",DateUtil.getCurrentAgeTime(12));
+        //0 轴温 1供电 2制动 3防滑剂 4://车门 5://烟火 6://制氧机 7://空调 8 车下电源
+        intent.putExtra("troubleType",troubleType);
+        intent.putExtra("carriageNum",mList.get(pos).getCarriageNum());//车厢编号 全部
+        startActivity(intent);
+    }
+}

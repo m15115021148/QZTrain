@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.1"
+        android:background="@color/pop_txt_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100px_in720p"
+            android:gravity="center"
+            android:text="数据类型"
+            android:textColor="@color/red_txt"
+            android:textSize="@dimen/_30px_in720p" />
+
+        <ListView
+            android:background="@color/white"
+            android:layout_marginRight="@dimen/_10px_in720p"
+            android:id="@+id/ListView_Left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#3A3A3A"
+        android:layout_weight="2.9"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100px_in720p"
+            android:gravity="center"
+            android:text="列车实时监控数据"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_30px_in720p" />
+
+        <!--右侧数据-->
+        <com.sitemap.qingzangtrain.view.MySyncHorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <com.sitemap.qingzangtrain.view.MyListView
+                android:id="@+id/listView_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:divider="@null"
+                android:scrollbars="none" />
+
+        </com.sitemap.qingzangtrain.view.MySyncHorizontalScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

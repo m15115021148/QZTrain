@@ -1,0 +1,354 @@
+package com.sitemap.qingzangtrain.config;
+
+/**
+ * @author zhangfan
+ * @ClassName: WebUrlConfig.java
+ * @Description: 网络url（接口）配置文件
+ * @Date 2017-1-11
+ */
+
+public class WebUrlConfig {
+    private static final String HOST_NAME = WebHostConfig.getHostName();
+    private static final String LOGIN = HOST_NAME + "dbAction_loginAndroid.do?";//登录
+
+    private static final String GETTRAININFO = HOST_NAME + "dbAction_getTrainInfo.do?";//获取所有车辆目前运行基本信息（首页）
+    private static final String GETSTATISTICSINFO = HOST_NAME + "dbAction_getStatisticsInfo.do?";//获取统计信息（首页）
+    private static final String GETTROUBLES = HOST_NAME + "dbAction_getTroubles.do?";//获取故障列表
+    private static final String GETGONGDIAN = HOST_NAME + "dbAction_getGongdian.do?";//查询供电数据
+    private static final String GETZHOUWEN = HOST_NAME + "dbAction_getZhouwen.do?";//查询轴温数据
+    private static final String GETZHIDONG = HOST_NAME + "dbAction_getZhidong.do?";//查询制动数据
+    private static final String GETFANGHUAQI = HOST_NAME + "dbAction_getFanghuaqi.do?";//查询防滑器数据
+    private static final String GETCHEMEN = HOST_NAME + "dbAction_getChemen.do?";//查询车门数据
+    private static final String GETYANHUO = HOST_NAME + "dbAction_getYanhuo.do?";//查询烟火数据
+    private static final String GETZHIYANGJI = HOST_NAME + "dbAction_getZhiyangji.do?";//查询制氧机数据
+    private static final String GETKONGTIAO = HOST_NAME + "dbAction_getKongtiao.do?";//查询空调数据
+    private static final String GETTROUBLEINFO = HOST_NAME + "dbAction_getTroubleInfo.do?";//查看故障（告警）处理详情
+    private static final String GETDESINFO = HOST_NAME + "dbAction_getdesInfo.do?";//获取常用短语
+    private static final String UPLOADCHECKINFO = HOST_NAME + "dbAction_uploadCheckInfo.do?";//提交核查信息
+    private static final String UPLOADFIXINFO = HOST_NAME + "dbAction_uploadFixInfo.do?";//提交维修信息
+    private static final String UPDATECHECK = HOST_NAME + "dbAction_uploadCheck.do?";//更改核查状态
+    private static final String UPDATEFIX = HOST_NAME + "dbAction_uploadFix.do?";//更改维修状态
+    private static final String GETCHEXIADIANYUAN = HOST_NAME + "dbAction_getDianyuan.do?";//查询车下电源数据
+    private static final String GETTROUBLESNUM = HOST_NAME + "dbAction_getTroublesNum.do?";//获取故障（告警）列表统计数据
+    private static final String GETWARMNUM = HOST_NAME + "dbAction_getWarnNums.do?";//获取单车故障统计数据（首页底部）
+    private static final String GETWARMS = HOST_NAME + "dbAction_getWarns.do?";//获取单车故障列表
+    private static final String GETCARRIAGES = HOST_NAME + "dbAction_getCarriages.do?";//获取车厢列表
+    private static final String GETMOVERANGES = HOST_NAME + "dbAction_getMoveRanges.do?";//获取运行区间列表
+    private static final String SEARCHCURRENTTRAINSINFO = HOST_NAME + "dbAction_searchCurrentTrainInfo.do?";//查询实时数据
+    private static final String GETDATASTATISTICS = HOST_NAME + "appChart.jsp?";//曲线图
+
+    /**
+     * android登录
+     *
+     * @param mac 手机mac地
+     * @return
+     */
+    public static String login(String mac) {
+        return LOGIN + "mac=" + mac;
+    }
+
+    /**
+     * 获取所有车辆目前运行基本信息（首页）
+     *
+     * @return
+     */
+    public static String getTrainInfo(String userID) {
+        return GETTRAININFO + "userID=" + userID;
+    }
+
+
+    /**
+     * 获取统计信息（首页）
+     *
+     * @return
+     */
+    public static String getStatisticsInfo() {
+        return GETSTATISTICSINFO;
+    }
+
+
+    /**
+     * 获取故障列表
+     *
+     * @param trainID      车次id(数据库表主键，查询所有传””)
+     * @param troubleType  故障类型 (1 车下电源2 轴温3 防滑器4 烟火5 车门6 空调7 制氧机)
+     * @param troubleLevel 故障级别 (1,2,3)
+     * @param startTime    开始时间
+     * @param endTime      结束时间
+     * @param page         页码（分页查询,默认为1）
+     * @param userID       用户id
+     * @param troubleID
+     * @return
+     */
+    public static String getTroubles(String trainID, String troubleType, String troubleLevel, String startTime, String endTime, String page, String userID, String troubleID) {
+        return GETTROUBLES + "trainID=" + trainID + "&troubleType=" + troubleType + "&troubleLevel=" + troubleLevel + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&userID=" + userID+"&troubleID="+troubleID;
+    }
+
+    /**
+     * 查询供电数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getGongdian(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETGONGDIAN + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+
+    /**
+     * 查询轴温数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getZhouwen(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETZHOUWEN + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+
+    /**
+     * 查询制动数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getZhidong(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETZHIDONG + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+    /**
+     * 查询防滑器数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getFanghuaqi(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETFANGHUAQI + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+    /**
+     * 查询车门数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getChemen(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETCHEMEN + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+    /**
+     * 查询烟火数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getYanhuo(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETYANHUO + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+
+    /**
+     * 查询制氧机数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getZhiyangji(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETZHIYANGJI + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+
+    /**
+     * 查询空调数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getKongtiao(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETKONGTIAO + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+    /**
+     * 查询车下电源数据
+     *
+     * @param trainID     车次id  (数据库表主键，查询所有传””)
+     * @param trainStatus 列车状态 (查询所有，传””，1故障)
+     * @param startTime   开始时间
+     * @param endTime     结束时间
+     * @param page        页码（分页查询,默认为1）
+     * @return
+     */
+    public static String getCheXiaDianYuan(String trainID, String trainStatus, String startTime, String endTime, String page, String carriageNum, String runRanges, String stopRanges) {
+        return GETCHEXIADIANYUAN + "trainID=" + trainID + "&trainStatus=" + trainStatus + "&startTime=" + startTime + "&endTime=" + endTime + "&page=" + page + "&carriageNum=" + carriageNum + "&moveRange=" + runRanges + "&stopRange=" + stopRanges;
+    }
+
+    /**
+     * 查看故障（告警）处理详情
+     *
+     * @param troubleID 故障ID
+     * @return
+     */
+    public static String getTroubleInfo(String troubleID) {
+        return GETTROUBLEINFO + "troubleID=" + troubleID;
+    }
+
+    /**
+     * 获取常用短语
+     *
+     * @param type 信息类型（1：核查，2：维修）
+     * @return
+     */
+    public static String getDesInfo(String type) {
+        return GETDESINFO + "type=" + type;
+    }
+
+    /**
+     * 提交核查信息
+     *
+     * @return
+     */
+    public static String upLoadCheckInfo() {
+        return UPLOADCHECKINFO;
+    }
+
+    /**
+     * 提交维修信息
+     *
+     * @return
+     */
+    public static String upLoadFixInfo() {
+        return UPLOADFIXINFO;
+    }
+
+    /**
+     * 更改核查状态
+     *
+     * @param userID    用户ID
+     * @param troubleID 故障ID
+     * @return
+     */
+    public static String updateCheck(String userID, String troubleID) {
+        return UPDATECHECK + "userID=" + userID + "&troubleID=" + troubleID;
+    }
+
+    /**
+     * 更改维修状态
+     *
+     * @param userID    用户ID
+     * @param troubleID 故障ID
+     * @return
+     */
+    public static String updateFix(String userID, String troubleID) {
+        return UPDATEFIX + "userID=" + userID + "&troubleID=" + troubleID;
+    }
+
+    /**
+     * 获取故障（告警）列表统计数据
+     *
+     * @param userID 用户id
+     * @return
+     */
+    public static String getTroublesNum(String userID) {
+        return GETTROUBLESNUM + "userID=" + userID;
+    }
+
+    /**
+     * 获取单车故障统计数据（首页底部）
+     *
+     * @param userID 用户id
+     * @return
+     */
+    public static String getWarmNums(String userID) {
+        return GETWARMNUM + "userID=" + userID;
+    }
+
+    /**
+     * 获取单车故障列表
+     *
+     * @param userID
+     * @param troubleType 故障类型 (1供电, 2轴温, 3制动, 4防滑器, 5烟火, 6车门, 7制氧机, 8车门, 9车下电源，查询所有传””)
+     * @return
+     */
+    public static String getWarms(String userID, String troubleType) {
+        return GETWARMS + "userID=" + userID + "&troubleType=" + troubleType;
+    }
+
+    /**
+     * 获取车厢列表
+     *
+     * @param trainID 车次id  (数据库表主键，查询所有传””)
+     * @return
+     */
+    public static String getCarriages(String trainID) {
+        return GETCARRIAGES + "trainID=" + trainID;
+    }
+
+    /**
+     * 获取运行区间列表
+     *
+     * @param trainID 车次id  (数据库表主键，查询所有传””)
+     * @return
+     */
+    public static String getMoveRanges(String trainID) {
+        return GETMOVERANGES + "trainID=" + trainID;
+    }
+
+    /**
+     * 查询实时数据
+     *
+     * @return
+     */
+    public static String searchCurrentTrainsInfo() {
+        return SEARCHCURRENTTRAINSINFO;
+    }
+
+    /**
+     * 得到曲线图
+     *
+     * @param dataType 要展示曲线的子类型
+     * @param type     故障等级
+     * @param chexiang 车厢编号
+     * @param isValid  停留区间
+     * @param quJian   运行区间
+     * @param s_time   开始时间
+     * @param e_time   结束时间
+     * @return
+     */
+    public static String getAppChart(String dataType, String type, String chexiang, String isValid, String quJian, String s_time, String e_time) {
+        return GETDATASTATISTICS + "dataType=" + dataType + "&type=" + type + "&chexiang=" + chexiang + "&isValid=" + isValid + "&quJian=" + quJian + "&s_time=" + s_time + "&e_time=" + e_time;
+    }
+}
+
+	

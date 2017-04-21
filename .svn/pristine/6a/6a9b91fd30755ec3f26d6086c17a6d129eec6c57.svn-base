@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_filter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.FilterActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_60px_in720p"
+                android:text="数据类型"
+                android:textColor="@color/black_dan"
+                android:textSize="@dimen/_35px_in720p" />
+
+            <CheckBox
+                android:id="@+id/cb_all"
+                style="@style/TextFilterStyle"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_20px_in720p"
+                android:checked="false"
+                android:text="全部" />
+
+            <com.sitemap.qingzangtrain.view.MyGridView
+                android:id="@+id/filter_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginRight="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_60px_in720p"
+                android:background="@null"
+                android:numColumns="3"
+                android:scrollbars="none" />
+
+            <View
+                android:background="@color/grey_dan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_2px_in720p"/>
+
+            <TextView
+                android:id="@+id/filter_sure"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80px_in720p"
+                android:layout_marginLeft="@dimen/_40px_in720p"
+                android:layout_marginRight="@dimen/_40px_in720p"
+                android:layout_marginTop="@dimen/_40px_in720p"
+                android:layout_marginBottom="@dimen/_150px_in720p"
+                android:background="@drawable/filter_sure_bg"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_32px_in720p" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

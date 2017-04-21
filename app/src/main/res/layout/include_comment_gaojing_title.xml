@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_10px_in720p">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/_40px_in720p"
+                android:layout_height="@dimen/_40px_in720p"
+                android:layout_marginLeft="@dimen/_10px_in720p"
+                android:src="@drawable/alarm_red" />
+
+            <TextView
+                android:id="@+id/gaojing_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20px_in720p"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="轴温温度报警"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_32px_in720p" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2px_in720p"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:background="@color/grey_dan" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:layout_marginTop="@dimen/_20px_in720p"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/train"
+                style="@style/TextHistoryStyle"
+                android:text="车次: Z21"
+                android:layout_weight="1.8"
+                />
+
+            <TextView
+                android:id="@+id/train_code"
+                style="@style/TextHistoryStyle"
+                android:text="车箱: 13"
+                />
+
+            <TextView
+                android:id="@+id/number"
+                style="@style/TextHistoryStyle"
+                android:text="车箱编号: YZ120999"
+                android:layout_weight="1.8"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20px_in720p"
+            android:layout_marginRight="@dimen/_20px_in720p"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/type"
+                style="@style/TextHistoryStyle"
+                android:text="类别: 轴温"
+                android:layout_weight="1.8"/>
+
+            <TextView
+                android:id="@+id/level"
+                style="@style/TextHistoryStyle"
+                android:text="级别: 1" />
+
+            <TextView
+                android:id="@+id/last"
+                style="@style/TextHistoryStyle"
+                android:layout_weight="1.8"
+                android:text="历时: 30分钟"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20px_in720p"
+            android:background="@drawable/power_supply_lv_bg"
+            android:orientation="vertical">
+
+            <com.sitemap.qingzangtrain.view.MyListView
+                android:id="@+id/include_listView"
+                android:divider="@null"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_power_supply"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.sitemap.qingzangtrain.activity.DataPowerSupplyActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100px_in720p"
+        android:orientation="horizontal">
+
+        <include
+            layout="@layout/include_power_left_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <include
+            layout="@layout/include_power_right_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20px_in720p"
+        android:background="@color/pop_txt_bg" />
+
+
+    <com.sitemap.qingzangtrain.view.PullToRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/refresh_head" />
+
+        <com.sitemap.qingzangtrain.view.PullableScrollView
+            android:id="@+id/contentScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/data_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_20px_in720p">
+
+                    <!--左侧数据-->
+                    <com.sitemap.qingzangtrain.view.MyListView
+                        android:id="@+id/power_list_left"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:divider="@null"
+                        android:scrollbars="none" />
+
+                    <!--右侧数据-->
+                    <com.sitemap.qingzangtrain.view.MySyncHorizontalScrollView
+                        android:id="@+id/power_scrollview_right"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:scrollbars="none">
+
+                        <com.sitemap.qingzangtrain.view.MyListView
+                            android:id="@+id/power_list_right"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@null"
+                            android:scrollbars="none" />
+
+                    </com.sitemap.qingzangtrain.view.MySyncHorizontalScrollView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/isShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_450px_in720p"
+                    android:gravity="bottom|center"
+                    android:text="暂无数据"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_32px_in720p"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.sitemap.qingzangtrain.view.PullableScrollView>
+
+        <include layout="@layout/load_more" />
+
+    </com.sitemap.qingzangtrain.view.PullToRefreshLayout>
+
+
+</LinearLayout>
